@@ -48,11 +48,9 @@ We had three group members count the cyclomatic complexity of 4 methods. Our res
 | equals()        | 9 | 9 | 7 | 7 |
 | fromByteArray() | 9 | 4 | 4 | 4 |
 
-None of the methods are outrageously long, but all of them except for `create()` could feasibly be shortened.
+OpenCensus can upload data to various backends. `ZipkinExporterHandler` contains static methods to aid in doing so for [Zipkin](https://github.com/openzipkin/zipkin). `generateSpan()` is one of them. It generates a [span](https://opencensus.io/tracing/span/), something like a single query, for the Zipkin library using the appropriate data. This method is undocumented. Could move out some checking.
 
-OpenCensus can upload data to various backends. `ZipkinExporterHandler` contains static methods to aid in doing so for [Zipkin](https://github.com/openzipkin/zipkin). `generateSpan()` is one of them. It generates a [span](https://opencensus.io/tracing/span/), something like a single query, for the Zipkin library using the appropriate data. This method is undocumented.
-
-`Duration` represents a span of time (not to be confused with the other span). Its static method `create()` instantiates one. This is done with a static method instead of a constructor because the AutoValue code generator is used. The documentation clearly states why an Exception might occur.
+`Duration` represents a span of time (not to be confused with the other span). Its static method `create()` instantiates one. This is done with a static method instead of a constructor because the AutoValue code generator is used. The documentation clearly states why an Exception might occur. Could improve complexity by using library methods.
 
 `TagContext` is used to contain metadata about operations. `equals()` is a standard override comparing contained keys and values. The documentation clearly states that it will return true if they are the same and false otherwise.
 
@@ -66,7 +64,10 @@ OpenCensus can upload data to various backends. `ZipkinExporterHandler` contains
 
 Instana is a APM that can be used for automatic visualization and performance analysis. The class `InstanaExporterHandler` handles a `Span` and exports its data in different formats. The class contains the function `convertToJson()` that converts the data to a JSON string.
 
+None of the methods are outrageously long, but all of them except for `create()` could feasibly be shortened. Our opinion is that this project is mostly well factored already, with only small improvements possible.
+
 ## Coverage
+
 
 ### Tools
 
