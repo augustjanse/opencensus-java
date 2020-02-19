@@ -115,6 +115,8 @@ The two limitations to the tool is that it doesn't cover all kinds of branches a
 
 3. Are the results of your tool consistent with existing coverage tools?
 
+Yes, the results of our tools are consistent with the existing coverage tools. Test cases for branches which are uncovered previously are added without disturbing the original test cases. Therefore, the coverage rate has been improved. For example, regarding convertToJson (JsonConversionUtils), the previous test cases leave out branch 1,3,6,7,11. By using the newly added test cases, braches 1,3,6 can be tested.
+
 ### Coverage improvement
 
 Show the comments that describe the requirements for the coverage.
