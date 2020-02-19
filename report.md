@@ -56,13 +56,13 @@ OpenCensus can upload data to various backends. `ZipkinExporterHandler` contains
 
 `BinaryFormatImpl` is a helper class for `SpanContext`. `SpanContext` represents the associated state for a `Span`. `fromByteArray()` generates one from a byte array. The method is undocumented, but the method it overrides contains documentation explaining succinctly when Exceptions are thrown.
 
-[ServerStatsEncoding](https://javadoc.io/doc/io.opencensus/opencensus-api/latest/io/opencensus/common/ServerStatsEncoding.html) is a class that encodes/decodes ServerStats (a representation of stats measured on the server side). The method `parseBytes()` decodes a serialized byte array. If the decoding succeed it returns the decoded value, otherwise null. 
+[ServerStatsEncoding](https://javadoc.io/doc/io.opencensus/opencensus-api/latest/io/opencensus/common/ServerStatsEncoding.html) is a class that encodes/decodes ServerStats (a representation of stats measured on the server side). The method `parseBytes()` decodes a serialized byte array. If the decoding succeed it returns the decoded value, otherwise null. The documentation clearly states the return value, but isn't clear on when the method throws exceptions.
 
-[Tracestate](https://javadoc.io/static/io.opencensus/opencensus-api/0.25.0/io/opencensus/trace/Tracestate.html) is a class that carries tracing-system specific context in a list of key-value pairs. The method `validateKey()` verifies that a key is valid, i.e. follows a set of pre-defined rules.
+[Tracestate](https://javadoc.io/static/io.opencensus/opencensus-api/0.25.0/io/opencensus/trace/Tracestate.html) is a class that carries tracing-system specific context in a list of key-value pairs. The method `validateKey()` verifies that a key is valid, i.e. follows a set of pre-defined rules. This is clear from the method name, but not further documented.
 
-[Metric](https://javadoc.io/static/io.opencensus/opencensus-api/0.25.0/io/opencensus/metrics/Metrics.html) is a class that represent a datamodel for what exporters takes as input. The method `checkTypeMatch()` check that the different arguments are of the correct type, i.e. Long, Double etc.
+[Metric](https://javadoc.io/static/io.opencensus/opencensus-api/0.25.0/io/opencensus/metrics/Metrics.html) is a class that represent a datamodel for what exporters takes as input. The method `checkTypeMatch()` check that the different arguments are of the correct type, i.e. Long, Double etc. The method is undocumented.
 
-Instana is a APM that can be used for automatic visualization and performance analysis. The class `InstanaExporterHandler` handles a `Span` and exports its data in different formats. The class contains the function `convertToJson()` that converts the data to a JSON string.
+Instana is a APM that can be used for automatic visualization and performance analysis. The class `InstanaExporterHandler` handles a `Span` and exports its data in different formats. The class contains the function `convertToJson()` that converts the data to a JSON string. The method is undocumented but always returns a JSON string as expected.
 
 None of the methods are outrageously long, but all of them except for `create()` could feasibly be shortened. Our opinion is that this project is mostly well factored already, with only small improvements possible.
 
