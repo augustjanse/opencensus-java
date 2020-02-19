@@ -139,6 +139,6 @@ git diff ...
 
 ## Overall experience
 
-What are your main take-aways from this project? What did you learn?
+We learned the difficulty of supporting different Java version. One takeaway is that Google code generators (`AutoValue`) may have a lot of benefits, but also increase the threshold to get started in a project.
 
-Is there something special you want to mention here?
+We think this project is a lot more complicated than some other projects, with lots of submodules, dependencies and requirements. We managed to dive into this project even so, and even though the code was well factored in the first place, we think we managed to make valuable refactorings. We think that should be counted for P+.
