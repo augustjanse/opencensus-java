@@ -122,14 +122,7 @@ public class TraceContextFormat extends TextFormat {
     try {
       // TODO(bdrutu): Do we need to verify that version is hex and that for the version
       // the length is the expected one?
-      checkArgument(
-          traceparent.charAt(TRACE_OPTION_OFFSET - 1) == TRACEPARENT_DELIMITER
-              && (traceparent.length() == TRACEPARENT_HEADER_SIZE
-                  || (traceparent.length() > TRACEPARENT_HEADER_SIZE
-                      && traceparent.charAt(TRACEPARENT_HEADER_SIZE) == TRACEPARENT_DELIMITER))
-              && traceparent.charAt(SPAN_ID_OFFSET - 1) == TRACEPARENT_DELIMITER
-              && traceparent.charAt(TRACE_OPTION_OFFSET - 1) == TRACEPARENT_DELIMITER,
-          "Missing or malformed TRACEPARENT.");
+      checkArgument(validTraceparent(traceparent), "Missing or malformed TRACEPARENT.");
 
       traceId = TraceId.fromLowerBase16(traceparent, TRACE_ID_OFFSET);
       spanId = SpanId.fromLowerBase16(traceparent, SPAN_ID_OFFSET);
@@ -160,5 +153,15 @@ public class TraceContextFormat extends TextFormat {
     } catch (IllegalArgumentException e) {
       throw new SpanContextParseException("Invalid tracestate: " + tracestate, e);
     }
+  }
+
+  /** Returns false is the given traceparent is missing or malformed, true otherwise. */
+  private boolean validTraceparent(String traceparent) {
+    return traceparent.charAt(TRACE_OPTION_OFFSET - 1) == TRACEPARENT_DELIMITER
+        && (traceparent.length() == TRACEPARENT_HEADER_SIZE
+            || (traceparent.length() > TRACEPARENT_HEADER_SIZE
+                && traceparent.charAt(TRACEPARENT_HEADER_SIZE) == TRACEPARENT_DELIMITER))
+        && traceparent.charAt(SPAN_ID_OFFSET - 1) == TRACEPARENT_DELIMITER
+        && traceparent.charAt(TRACE_OPTION_OFFSET - 1) == TRACEPARENT_DELIMITER;
   }
 }
