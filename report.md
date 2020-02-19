@@ -136,6 +136,8 @@ https://github.com/augustjanse/opencensus-java/commit/277c59495aff9f31a90ef6059e
 
 In the refactorization of the methods [generateSpan()](https://github.com/augustjanse/opencensus-java/commit/753b9b47f0892e843f6ce1b757bcc97000ab5d4d)& [create()](https://github.com/augustjanse/opencensus-java/commit/6ea06e731679855b871fc165fd2cd7a0d7599d13) we rewrote some branching statements to lower the CCN as well as moving them to a new methods which gets called instead of being built in. 
 
+`extract()` is refactored by extracting a complicated logical compound statement into a separate method. This reduces the CC of the method and makes the code more self-documenting, ideally. Because the statement is only moved, it is however arguable if it makes much difference for the CC. The method becomes easier to read, but if it's important to see the exact check you need to scroll down.
+
 The function [equals()](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/api/src/main/java/io/opencensus/tags/TagContext.java) can be refactored into a smaller function by moving the second while loop to a new method which executes the same instructions. The method would take the HashMap `tags` as input and return either false or `tags`.
 
 The benefit of refactoring a function is that it provides a simple and effective way to decrease the CCN, which in turn facilitates writing test cases to achieve full coverage of the function. Other pros of refactoring is that it could improve the design of the software, make the software simpler to understand and generate overall improvement.
