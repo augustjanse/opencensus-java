@@ -119,13 +119,16 @@ The two limitations to the tool is that it doesn't cover all kinds of branches a
 
 Show the comments that describe the requirements for the coverage.
 
-Report of old coverage: [link]
+Report of old coverage: [link](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/results)
 
-Report of new coverage: [link]
+Report of new coverage: [link](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/results2)
 
-Test cases added:
+Test cases added are available in the following commits:
 
-git diff ...
+https://github.com/augustjanse/opencensus-java/commit/92d141991bfb9b93b35d5ea90c16be50eceda09f
+https://github.com/augustjanse/opencensus-java/commit/b61b583a68a46002d28617df7362155b256f2313
+https://github.com/augustjanse/opencensus-java/commit/47a91c272dd64a0e0be254a5d1d82380d5872efb
+https://github.com/augustjanse/opencensus-java/commit/277c59495aff9f31a90ef6059e7b1e91b38bce6a (broken, fixed in https://github.com/augustjanse/opencensus-java/commit/c71f330d5c456ea79797ec149c305b32f65caddd )
 
 ## Refactoring
 
