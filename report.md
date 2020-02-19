@@ -134,13 +134,15 @@ https://github.com/augustjanse/opencensus-java/commit/277c59495aff9f31a90ef6059e
 
 ## Refactoring
 
-Plan for refactoring complex code:
+In the refactorization of the methods [generateSpan()](https://github.com/augustjanse/opencensus-java/commit/753b9b47f0892e843f6ce1b757bcc97000ab5d4d)& [create()](https://github.com/augustjanse/opencensus-java/commit/6ea06e731679855b871fc165fd2cd7a0d7599d13) we rewrote some branching statements to lower the CCN as well as moving them to a new methods which gets called instead of being built in. 
 
-Estimated impact of refactoring (lower CC, but other drawbacks?).
+The function [equals()](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/api/src/main/java/io/opencensus/tags/TagContext.java) can be refactored into a smaller function by moving the second while loop to a new method which executes the same instructions. The method would take the HashMap `tags` as input and return either false or `tags`.
 
-Carried out refactoring (optional)
+The benefit of refactoring a function is that it provides a simple and effective way to decrease the CCN, which in turn facilitates writing test cases to achieve full coverage of the function. Other pros of refactoring is that it could improve the design of the software, make the software simpler to understand and generate overall improvement.
 
-git diff ...
+The cons however of refactoring by oursourcing to new methods is that those methods requires new test cases to be made in order to achieve full coverage. With refactoring you also run the risk of introducing new bugs which could be time consuming to solve, and time spent inefficiently could be costly.
+
+When refactoring one should strive for reusing code as much as possible, this will facilitate the development since it will be easier to manage and achieve a high coverage.
 
 ## Overall experience
 
