@@ -10,6 +10,10 @@ This is the report for assignment 3 of the DD2480 course.
 
 Project had build instructions in `CONTRIBUTING.md`. Following them with Java 13 gave an error. The file mentioned that the project uses Java 6, which isn't supported anymore. `openjdk-8-jdk` seemed to work, though. The local build then took 20 minutes on a laptop, but gave no errors.
 
+Problems with mockito was discovered when trying to assemble the program,
+errors generated was `java.lang.NumberFormatException: For input string: "0,000100"` this was solved by running the command:
+'export JAVA_TOOL_OPTIONS="-Duser.country=US -Duser.language=en"' which change locale.
+
 ## Complexity
 Running
 
