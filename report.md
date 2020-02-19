@@ -1,8 +1,6 @@
 # Report for assignment 3
 
-This is a template for your report. You are free to modify it as needed.
-It is not required to use markdown for your report either, but the report
-has to be delivered in a standard, cross-platform format.
+This is the report for assignment 3 of the DD2480 course.
 
 ## Project
 
@@ -113,32 +111,30 @@ Logging was added to `if`, `while`, `catch` and `for` branches. Empty `else` blo
 
 The two limitations to the tool is that it doesn't cover all kinds of branches and (mainly) that it is not really automatic.
 
-3. Are the results of your tool consistent with existing coverage tools?
-
-Yes, the results of our tools are consistent with the existing coverage tools. Test cases for branches which are uncovered previously are added without disturbing the original test cases. Therefore, the coverage rate has been improved. For example, regarding convertToJson (JsonConversionUtils), the previous test cases leave out branch 1,3,6,7,11. By using the newly added test cases, braches 1,3,6 can be tested.
+Yes, the results of our tools are consistent with the existing coverage tools. Test cases for branches which are uncovered previously are added without disturbing the original test cases. Therefore, the coverage rate has been improved. For example, regarding `convertToJson` (`JsonConversionUtils`), the previous test cases leave out branches 1, 3, 6, 7 and 11. By using the newly added test cases, braches 1, 3 and 6 can be tested.
 
 ### Coverage improvement
 
 Show the comments that describe the requirements for the coverage.
 
-Report of old coverage: [link](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/results)
+Report of old coverage: [results](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/results)
 
-Report of new coverage: [link](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/results2)
+Report of new coverage: [results2](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/results2)
 
 Test cases added are available in the following commits:
 
-https://github.com/augustjanse/opencensus-java/commit/92d141991bfb9b93b35d5ea90c16be50eceda09f
-https://github.com/augustjanse/opencensus-java/commit/b61b583a68a46002d28617df7362155b256f2313
-https://github.com/augustjanse/opencensus-java/commit/47a91c272dd64a0e0be254a5d1d82380d5872efb
-https://github.com/augustjanse/opencensus-java/commit/277c59495aff9f31a90ef6059e7b1e91b38bce6a (broken, fixed in https://github.com/augustjanse/opencensus-java/commit/c71f330d5c456ea79797ec149c305b32f65caddd )
+- [`92d141`](https://github.com/augustjanse/opencensus-java/commit/92d141991bfb9b93b35d5ea90c16be50eceda09f)
+- [`b61b58`](https://github.com/augustjanse/opencensus-java/commit/b61b583a68a46002d28617df7362155b256f2313)
+- [`47a91c`](https://github.com/augustjanse/opencensus-java/commit/47a91c272dd64a0e0be254a5d1d82380d5872efb)
+- [`277c59`](https://github.com/augustjanse/opencensus-java/commit/277c59495aff9f31a90ef6059e7b1e91b38bce6a) (broken, fixed in [`c71f33`](https://github.com/augustjanse/opencensus-java/commit/c71f330d5c456ea79797ec149c305b32f65caddd))
 
 ## Refactoring
 
-In the refactorization of the methods [generateSpan()](https://github.com/augustjanse/opencensus-java/commit/753b9b47f0892e843f6ce1b757bcc97000ab5d4d)& [create()](https://github.com/augustjanse/opencensus-java/commit/6ea06e731679855b871fc165fd2cd7a0d7599d13) we rewrote some branching statements to lower the CCN as well as moving them to a new methods which gets called instead of being built in. 
+In the refactorization of the methods [`generateSpan()`](https://github.com/augustjanse/opencensus-java/commit/753b9b47f0892e843f6ce1b757bcc97000ab5d4d) & [`create()`](https://github.com/augustjanse/opencensus-java/commit/6ea06e731679855b871fc165fd2cd7a0d7599d13) we rewrote some branching statements to lower the CCN as well as moving them to a new methods which gets called instead of being built in.
 
 `extract()` is refactored by extracting a complicated logical compound statement into a separate method. This reduces the CC of the method and makes the code more self-documenting, ideally. Because the statement is only moved, it is however arguable if it makes much difference for the CC. The method becomes easier to read, but if it's important to see the exact check you need to scroll down.
 
-The function [equals()](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/api/src/main/java/io/opencensus/tags/TagContext.java) can be refactored into a smaller function by moving the second while loop to a new method which executes the same instructions. The method would take the HashMap `tags` as input and return either false or `tags`.
+The function [`equals()`](https://github.com/augustjanse/opencensus-java/blob/report-and-coverage/api/src/main/java/io/opencensus/tags/TagContext.java) can be refactored into a smaller function by moving the second while loop to a new method which executes the same instructions. The method would take the HashMap `tags` as input and return either false or `tags`.
 
 The benefit of refactoring a function is that it provides a simple and effective way to decrease the CCN, which in turn facilitates writing test cases to achieve full coverage of the function. Other pros of refactoring is that it could improve the design of the software, make the software simpler to understand and generate overall improvement.
 
@@ -148,6 +144,6 @@ When refactoring one should strive for reusing code as much as possible, this wi
 
 ## Overall experience
 
-We learned the difficulty of supporting different Java version. One takeaway is that Google code generators (`AutoValue`) may have a lot of benefits, but also increase the threshold to get started in a project.
+We learned the difficulty of supporting different Java versions. One takeaway is that Google code generators (`AutoValue`) may have a lot of benefits, but also increase the threshold to get started in a project.
 
 We think this project is a lot more complicated than some other projects, with lots of submodules, dependencies and requirements. We managed to dive into this project even so, and even though the code was well factored in the first place, we think we managed to make valuable refactorings. We think that should be counted for P+.
